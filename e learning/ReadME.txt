@@ -76,7 +76,7 @@ Add your project screenshots here.
 
 # 👩‍💻 Developed By
 
-Alafiya Shaikh
+Alafiya Inamdar
 
 B.Tech Computer Science Engineering Student
 
