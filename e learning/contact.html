@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact - EduSite</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.contact-wrapper {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(108,76,255,0.85), rgba(79,209,197,0.88)),
+    url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&q=80') center/cover no-repeat;
+  padding: 50px 20px;
+  position: relative;
+  overflow: hidden;
+}
+ 
+/* floating background shapes */
+.contact-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.07);
+  top: -80px;
+  right: -80px;
+  animation: floatShape 8s ease-in-out infinite;
+}
+ 
+.contact-wrapper::after {
+  content: '';
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+  bottom: 30px;
+  left: 8%;
+  animation: floatShape 10s ease-in-out infinite reverse;
+}
+ 
+.contact-box {
+  width: 460px;
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(16px);
+  padding: 38px 35px;
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.5);
+  text-align: center;
+  animation: fadeInUp 0.7s ease both;
+  position: relative;
+  z-index: 10;
+}
+ 
+/* top accent line */
+.contact-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 22px 22px 0 0;
+  background: linear-gradient(90deg, #6c4cff, #4fd1c5);
+}
+ 
+.contact-box h2 {
+  color: var(--primary);
+  font-size: 24px;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 8px rgba(108,76,255,0.1);
+}
+ 
+.contact-box .subtitle {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+ 
+.contact-box input,
+.contact-box textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 8px 0;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: #f8f6ff;
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+ 
+.contact-box input:focus,
+.contact-box textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(108,76,255,0.1);
+}
+ 
+.contact-box textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+ 
+.contact-box button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #6c4cff, #4fd1c5);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 6px 20px rgba(108,76,255,0.3);
+}
+ 
+.contact-box button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 35px rgba(108,76,255,0.4);
+}
+ 
+.contact-social {
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+ 
+.contact-social p {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+}
+ 
+.contact-social a {
+  display: inline-block;
+  margin: 4px 8px;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 6px 14px;
+  border: 1.5px solid rgba(108,76,255,0.25);
+  border-radius: 20px;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+ 
+.contact-social a:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+</style>
+</head>
+<body>
+<div class="navbar">
+  <h2>EduSite</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="courses_frame.html">Courses</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+  </div>
+</div>
+ 
+<div class="contact-wrapper">
+  <div class="contact-box">
+    <h2>Contact Us 💬</h2>
+    <p class="subtitle">We'd love to hear from you</p>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Email Address">
+    <textarea rows="4" placeholder="Your Message"></textarea>
+    <button>Send Message</button>
+    <div class="contact-social">
+      <p>Follow us</p>
+      <a href="https://www.instagram.com">Instagram</a>
+      <a href="https://www.youtube.com">YouTube</a>
+      <a href="https://www.w3schools.com">W3Schools</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+ 

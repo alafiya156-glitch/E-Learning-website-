@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NovaLearn Store — Learning + E-commerce Demo</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; color: #111; background: #f6f7fb; }
+    header { background: #111827; color: #fff; position: sticky; top: 0; z-index: 10; }
+    nav { max-width: 1100px; margin: 0 auto; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; }
+    nav .logo { font-weight: 700; letter-spacing: .3px; }
+    nav a { color: #fff; text-decoration: none; margin-left: 14px; font-size: 14px; }
+    nav a:hover { text-decoration: underline; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 18px 16px; }
+    .hero { background: linear-gradient(135deg, #4f46e5, #06b6d4); color: white; border-radius: 16px; padding: 28px; margin-top: 14px; }
+    .hero h1 { margin: 0 0 10px 0; font-size: 34px; }
+    .hero p { margin: 0 0 18px 0; max-width: 70ch; line-height: 1.5; }
+
+    .grid { display: grid; gap: 14px; grid-template-columns: repeat(12, 1fr); }
+    .card { background: white; border-radius: 14px; padding: 14px; box-shadow: 0 10px 25px rgba(17,24,39,.06); }
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-12 { grid-column: span 12; }
+
+    .pill { display: inline-block; background: rgba(255,255,255,.2); padding: 6px 10px; border-radius: 999px; font-size: 12px; }
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 10px; text-decoration: none; font-weight: 700; }
+    .btn-primary { background: #111827; color: white; }
+    .btn-primary:hover { filter: brightness(1.05); }
+    .btn-soft { background: rgba(255,255,255,.25); color: white; }
+    .btn-soft:hover { background: rgba(255,255,255,.32); }
+
+    section { margin-top: 18px; }
+    h2 { margin: 0 0 10px 0; }
+    .muted { color: #4b5563; line-height: 1.5; }
+    .small { font-size: 13px; color: #6b7280; }
+
+    .list { padding-left: 18px; }
+    .list li { margin: 6px 0; }
+
+    .product-img { width: 100%; height: 140px; object-fit: cover; border-radius: 10px; background: #eef2ff; }
+    .tag { font-size: 12px; padding: 4px 8px; border-radius: 999px; background: #eef2ff; color: #3730a3; display: inline-block; margin-top: 8px; }
+
+    /* Architecture diagram layout (simple boxes + arrows) */
+    .arch-wrap { overflow-x: auto; }
+    .arch { min-width: 980px; padding: 14px; background: white; border-radius: 14px; box-shadow: 0 10px 25px rgba(17,24,39,.06); }
+    .arch-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 12px; align-items: center; }
+    .arch-box { grid-column: span 3; border: 2px solid #e5e7eb; border-radius: 12px; padding: 12px; background: #fff; text-align: center; font-weight: 700; }
+    .arch-box small { display: block; font-weight: 400; margin-top: 6px; color: #4b5563; line-height: 1.3; }
+    .arrow { grid-column: span 1; text-align: center; font-size: 28px; color: #6b7280; }
+    .arch-output { grid-column: span 6; border: 2px solid #a7f3d0; background: #ecfdf5; }
+    .arch-title { text-align: center; font-weight: 800; margin-bottom: 10px; }
+
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 25px rgba(17,24,39,.06); }
+    th, td { padding: 12px; border-bottom: 1px solid #e5e7eb; text-align: left; }
+    th { background: #111827; color: #fff; }
+
+    form { background: white; padding: 14px; border-radius: 14px; box-shadow: 0 10px 25px rgba(17,24,39,.06); }
+    label { display: block; margin: 10px 0 6px; font-weight: 700; font-size: 14px; }
+    input, select, textarea { width: 100%; padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 10px; font-size: 14px; }
+    input:focus, select:focus, textarea:focus { outline: 3px solid rgba(79,70,229,.25); }
+    textarea { min-height: 100px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 12px; }
+    .form-col-6 { grid-column: span 6; }
+
+    footer { margin-top: 22px; background: #0b1220; color: #cbd5e1; padding: 22px 0; }
+    footer .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 16px; display: flex; gap: 14px; justify-content: space-between; flex-wrap: wrap; }
+    footer a { color: #93c5fd; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+
+<body>
+  <!-- Header + Navigation -->
+  <header>
+    <nav>
+      <div class="logo">NovaLearn Store</div>
+      <div>
+        <a href="#courses">Courses</a>
+        <a href="#shop">Shop</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#architecture">System Output</a>
+        <a href="#history">History</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <div class="hero">
+      <span class="pill">Learning + E-commerce UI</span>
+      <h1>Build skills. Buy modules. Get results.</h1>
+      <p class="muted">
+        This single-page website demonstrates common HTML elements and also includes a “System Architecture Output”
+        section that mirrors your diagram (User → Controller → Modules → Decision Layer → Final Output → Dashboard).
+      </p>
+      <a class="btn btn-primary" href="#shop">Explore Modules</a>
+      <a class="btn btn-soft" href="#courses">Start Learning</a>
+    </div>
+
+    <!-- Courses -->
+    <section id="courses">
+      <div class="grid">
+        <div class="col-12">
+          <h2>Featured Learning Paths</h2>
+          <p class="muted">Simple course cards + lesson lists (learning-style content).</p>
+        </div>
+
+        <article class="card col-4">
+          <h3>HTML Foundations</h3>
+          <p class="small">Beginner friendly • Hands-on practice</p>
+          <ul class="list">
+            <li>Headings, paragraphs</li>
+            <li>Links & images</li>
+            <li>Lists & tables</li>
+            <li>Forms (login/contact)</li>
+          </ul>
+          <span class="tag">Popular</span>
+        </article>
+
+        <article class="card col-4">
+          <h3>Web Forms & Inputs</h3>
+          <p class="small">Build real UI</p>
+          <ul class="list">
+            <li>Input types</li>
+            <li>Validation patterns</li>
+            <li>Textareas & selects</li>
+            <li>Form layout best practices</li>
+          </ul>
+          <span class="tag">Project</span>
+        </article>
+
+        <article class="card col-4">
+          <h3>Semantics & Layout</h3>
+          <p class="small">Cleaner structure</p>
+          <ul class="list">
+            <li>header/nav/main/section/footer</li>
+            <li>article + figure usage</li>
+            <li>accessible structure</li>
+            <li>responsive design basics</li>
+          </ul>
+          <span class="tag">Recommended</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- Shop -->
+    <section id="shop">
+      <div class="grid">
+        <div class="col-12">
+          <h2>Shop Modules (E-commerce Style)</h2>
+          <p class="muted">Cards that look like product listings.</p>
+        </div>
+
+        <article class="card col-4">
+          <img class="product-img" alt="Card module cover" src="https://picsum.photos/seed/card-module/600/300" />
+          <h3>Card Module</h3>
+          <p class="muted">Store card data and validate structure.</p>
+          <p class="small"><strong>$29</strong> • Lifetime access</p>
+          <a class="btn btn-primary" href="#contact" style="margin-top:10px;">Add to Cart</a>
+        </article>
+
+        <article class="card col-4">
+          <img class="product-img" alt="Face module cover" src="https://picsum.photos/seed/face-module/600/300" />
+          <h3>Face Module (OpenCV)</h3>
+          <p class="muted">Capture face and run basic detection.</p>
+          <p class="small"><strong>$39</strong> • Lifetime access</p>
+          <a class="btn btn-primary" href="#contact" style="margin-top:10px;">Add to Cart</a>
+        </article>
+
+        <article class="card col-4">
+          <img class="product-img" alt="ML module cover" src="https://picsum.photos/seed/ml-module/600/300" />
+          <h3>ML Module (Scikit-learn)</h3>
+          <p class="muted">Train a fraud classifier + scoring.</p>
+          <p class="small"><strong>$49</strong> • Lifetime access</p>
+          <a class="btn btn-primary" href="#contact" style="margin-top:10px;">Add to Cart</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Architecture / Output -->
+    <section id="architecture">
+      <div class="col-12">
+        <h2>System Architecture Output (Matches Your Diagram)</h2>
+        <p class="muted">
+          This is the “all points should cover their output” part. Each block leads to the next step until the final result.
+        </p>
+
+        <div class="arch-wrap">
+          <div class="arch">
+            <div class="arch-title">User → Controller → Modules → Decision Layer → Final Output → Dashboard/History</div>
+
+            <div class="arch-grid">
+              <div class="arch-box" style="grid-column: span 4;">
+                User (UI)
+                <small>(Tkinter Interface)</small>
+              </div>
+              <div class="arrow">↓</div>
+              <div class="arch-box" style="grid-column: span 4;">
+                Application Controller
+                <small>(app.py Navigation)</small>
+              </div>
+
+              <div class="arrow" style="grid-column: span 1;">↓</div>
+              <div class="arch-box" style="grid-column: span 3;">
+                Card Module
+                <small>DB/Data Handling</small>
+              </div>
+              <div class="arrow" style="grid-column: span 1;">↓</div>
+              <div class="arch-box" style="grid-column: span 3;">
+                Face Module
+                <small>OpenCV Capture</small>
+              </div>
+              <div class="arrow" style="grid-column: span 1;">↓</div>
+              <div class="arch-box" style="grid-column: span 3;">
+                ML Module
+                <small>Scikit-learn Prediction</small>
+              </div>
+
+              <div class="arrow" style="grid-column: span 1;">↘</div>
+              <div class="arch-box" style="grid-column: span 3;">
+                SQLite DB
+                <small>(Card Data)</small>
+              </div>
+              <div class="arrow" style="grid-column: span 1;">↘</div>
+              <div class="arch-box" style="grid-column: span 3;">
+                Camera Input
+                <small>(Face Capture)</small>
+              </div>
+              <div class="arrow" style="grid-column: span 1;">↘</div>
+              <div class="arch-box" style="grid-column: span 3;">
+                Fraud Prediction
+                <small>(ML + Risk Logic)</small>
+              </div>
+
+              <div style="grid-column: span 12; height: 4px;"></div>
+
+              <div class="arch-box" style="grid-column: span 12; background:#fff;">
+                Security Decision Layer
+                <small>(Face + ML Integration)</small>
+              </div>
+
+              <div style="grid-column: span 12; display:flex; align-items:center; gap:10px; justify-content:center; margin-top:-6px;">
+                <div class="arrow" style="grid-column:auto; font-size:34px;">↓</div>
+              </div>
+
+              <div class="arch-box arch-output" style="grid-column: span 12;">
+                Final Output (Result)
+                <small>Fraud / Genuine / Blocked</small>
+              </div>
+
+              <div class="arch-box" style="grid-column: span 12; margin-top:6px;">
+                Dashboard / Reports / History Module
+                <small>Tracking results + logs</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing + Table -->
+    <section id="pricing">
+      <div class="grid">
+        <div class="col-12">
+          <h2>Pricing Table</h2>
+          <p class="muted">Table element demo + “features” output.</p>
+        </div>
+
+        <div class="col-12" style="grid-column: span 12;">
+          <table aria-label="Pricing and features table">
+            <thead>
+              <tr>
+                <th>Plan</th>
+                <th>Best For</th>
+                <th>Includes</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Starter</strong></td>
+                <td>Learning basics</td>
+                <td>HTML + Forms</td>
+                <td>$19</td>
+              </tr>
+              <tr>
+                <td><strong>Pro</strong></td>
+                <td>Build UI + Modules</td>
+                <td>Courses + Architecture Demo</td>
+                <td>$39</td>
+              </tr>
+              <tr>
+                <td><strong>Team</strong></td>
+                <td>Real deployment</td>
+                <td>Dashboard + Reports + History</td>
+                <td>$79</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- History/Dashboard -->
+    <section id="history">
+      <div class="grid">
+        <div class="col-12">
+          <h2>Dashboard / Reports / History</h2>
+          <p class="muted">A simple “history log” output area.</p>
+        </div>
+
+        <article class="card col-6">
+          <h3>Recent Results</h3>
+          <p class="small">Example output entries</p>
+          <ul class="list">
+            <li>2026-05-01 — Genuine — Face + ML passed</li>
+            <li>2026-05-02 — Fraud — Risk score above threshold</li>
+            <li>2026-05-02 — Blocked — Missing/unclear face capture</li>
+          </ul>
+        </article>
+
+        <article class="card col-6">
+          <h3>Report Summary</h3>
+          <p class="muted">A place where you can show counts and exports later.</p>
+          <p class="small"><strong>Tip:</strong> Replace this text with real database-driven output.</p>
+          <ol class="list">
+            <li>Fetch logs from SQLite</li>
+            <li>Render results in dashboard</li>
+            <li>Allow filtering by date/class</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact + Login/Signup Forms -->
+    <section id="contact">
+      <div class="grid">
+        <div class="col-12">
+          <h2>Contact & Account Forms</h2>
+          <p class="muted">Form elements demo (label, input, select, textarea, button).</p>
+        </div>
+
+        <div class="col-6">
+          <form>
+            <h3>Login</h3>
+
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" name="loginEmail" type="email" placeholder="you@example.com" required />
+
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" name="loginPassword" type="password" placeholder="••••••••" required />
+
+            <div style="margin-top:12px;">
+              <button class="btn btn-primary" type="submit">Login</button>
+            </div>
+
+            <p class="small">Demo only — no backend connected.</p>
+          </form>
+        </div>
+
+        <div class="col-6">
+          <form>
+            <h3>Signup</h3>
+
+            <div class="form-row">
+              <div class="form-col-6">
+                <label for="firstName">First Name</label>
+                <input id="firstName" name="firstName" type="text" placeholder="John" required />
+              </div>
+              <div class="form-col-6">
+                <label for="lastName">Last Name</label>
+                <input id="lastName" name="lastName" type="text" placeholder="Doe" required />
+              </div>
+            </div>
+
+            <label for="role">I am interested in</label>
+            <select id="role" name="role" required>
+              <option value="">Select one</option>
+              <option>HTML & Basics</option>
+              <option>Web Forms</option>
+              <option>Architecture & ML UI</option>
+              <option>Dashboard Reporting</option>
+            </select>
+
+            <label for="message">Project message</label>
+            <textarea id="message" name="message" placeholder="Tell us what you want to build..." required></textarea>
+
+            <div style="margin-top:12px;">
+              <button class="btn btn-primary" type="submit">Create Account</button>
+            </div>
+
+            <p class="small">Demo only — no backend connected.</p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>NovaLearn Store</strong>
+        <p class="small">© 2026 • Learning + E-commerce demo website</p>
+      </div>
+      <div>
+        <p class="small">
+          Navigation:
+          <a href="#courses">Courses</a> •
+          <a href="#shop">Shop</a> •
+          <a href="#architecture">System Output</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Certificates - EduSite</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.cert-section {
+  min-height: 90vh;
+  background:
+    linear-gradient(160deg, rgba(79,209,197,0.84), rgba(108,76,255,0.88)),
+    url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&q=80') center/cover no-repeat fixed;
+  padding: 50px 8%;
+  position: relative;
+  overflow: hidden;
+}
+ 
+/* decorative floating shapes */
+.cert-section::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.07);
+  top: -60px;
+  right: -60px;
+  animation: floatShape 7s ease-in-out infinite;
+}
+ 
+.cert-section::after {
+  content: '';
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+  bottom: 60px;
+  left: 5%;
+  animation: floatShape 11s ease-in-out infinite reverse;
+}
+ 
+/* page heading */
+.cert-heading {
+  text-align: center;
+  color: #fff;
+  font-size: 28px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  margin-bottom: 30px;
+  animation: fadeInUp 0.7s ease both;
+}
+ 
+.cert-box {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+  padding: 32px;
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 10;
+  animation: fadeInUp 0.7s 0.15s ease both;
+}
+ 
+/* top gradient accent */
+.cert-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 22px 22px 0 0;
+  background: linear-gradient(90deg, #4fd1c5, #6c4cff);
+}
+ 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+ 
+thead tr {
+  background: linear-gradient(90deg, #6c4cff, #4fd1c5);
+}
+ 
+th {
+  color: #fff;
+  padding: 15px 18px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+ 
+th:first-child { border-radius: 8px 0 0 8px; }
+th:last-child  { border-radius: 0 8px 8px 0; }
+ 
+td {
+  padding: 15px 18px;
+  border-bottom: 1px solid #f0eeff;
+  font-size: 14px;
+  color: var(--text);
+  transition: background 0.25s;
+}
+ 
+tr:hover td {
+  background: #f5f3ff;
+}
+ 
+/* status badges */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+ 
+.badge-done {
+  background: #d1fae5;
+  color: #065f46;
+}
+ 
+.badge-progress {
+  background: #fef3c7;
+  color: #92400e;
+}
+ 
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: linear-gradient(90deg, #6c4cff, #4fd1c5);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 4px 12px rgba(108,76,255,0.25);
+}
+ 
+.download-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 22px rgba(108,76,255,0.35);
+}
+ 
+.pending-label {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+<div class="navbar">
+  <h2>EduSite</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="courses_frame.html">Courses</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+  </div>
+</div>
+ 
+<section class="cert-section">
+  <h2 class="cert-heading">🎓 My Certificates</h2>
+ 
+  <div class="cert-box">
+    <table>
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>Duration</th>
+          <th>Status</th>
+          <th>Certificate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HTML Mastery</td>
+          <td>1 Month</td>
+          <td><span class="badge badge-done">Completed</span></td>
+          <td><a href="#" class="download-btn">⬇ Download</a></td>
+        </tr>
+        <tr>
+          <td>CSS Advanced</td>
+          <td>1 Month</td>
+          <td><span class="badge badge-done">Completed</span></td>
+          <td><a href="#" class="download-btn">⬇ Download</a></td>
+        </tr>
+        <tr>
+          <td>Python Basics</td>
+          <td>2 Months</td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td><span class="pending-label">Pending...</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="courses.xsl"?>
+
+<courses>
+
+  <course>
+    <name>HTML Course</name>
+    <duration>1 Month</duration>
+    <level>Beginner</level>
+    <price>Free</price>
+  </course>
+
+  <course>
+    <name>CSS Course</name>
+    <duration>1 Month</duration>
+    <level>Intermediate</level>
+    <price>Free</price>
+  </course>
+
+  <course>
+    <name>Python Course</name>
+    <duration>2 Months</duration>
+    <level>Beginner</level>
+    <price>Paid</price>
+  </course>
+
+</courses>

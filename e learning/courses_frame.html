@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Courses - EduSite</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* background image + overlay */
+.courses-page-bg {
+  min-height: 100vh;
+  background:
+    linear-gradient(160deg, rgba(108,76,255,0.82), rgba(79,209,197,0.80)),
+    url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1600&q=80') center/cover no-repeat fixed;
+  padding: 20px 25px 50px;
+}
+ 
+/* page heading */
+.page-title {
+  text-align: center;
+  color: #fff;
+  font-size: 32px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  margin: 20px 0 25px;
+  animation: fadeInUp 0.7s ease both;
+}
+ 
+.page-title span {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 1px;
+  opacity: 0.85;
+  text-transform: none;
+  margin-top: 5px;
+  font-weight: 400;
+}
+ 
+/* frame layout */
+.frame-container {
+  display: flex;
+  height: 82vh;
+  gap: 22px;
+}
+ 
+/* LEFT PANEL */
+.course-sidebar {
+  width: 26%;
+  background: rgba(255,255,255,0.93);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  overflow-y: auto;
+  animation: fadeInUp 0.6s 0.1s ease both;
+}
+ 
+.course-sidebar h2 {
+  color: var(--primary);
+  margin-bottom: 18px;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0eeff;
+}
+ 
+/* course links */
+.course-sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 14px;
+  margin: 10px 0;
+  background: #f5f3ff;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  border-left: 3px solid transparent;
+}
+ 
+.course-sidebar a:hover {
+  background: linear-gradient(90deg, #6c4cff, #4fd1c5);
+  color: #fff;
+  transform: translateX(5px);
+  box-shadow: 0 6px 20px rgba(108,76,255,0.3);
+  border-left-color: transparent;
+}
+ 
+.course-sidebar a .course-icon {
+  font-size: 20px;
+}
+ 
+/* RIGHT PANEL */
+.course-content {
+  width: 74%;
+  background: rgba(255,255,255,0.96);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  animation: fadeInUp 0.6s 0.2s ease both;
+}
+ 
+.course-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+</style>
+</head>
+<body>
+<div class="navbar">
+  <h2>EduSite</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="courses_frame.html">Courses</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+  </div>
+</div>
+ 
+<div class="courses-page-bg">
+  <h1 class="page-title">📚 Explore Courses <span>Choose a course and start learning today</span></h1>
+ 
+  <div class="frame-container">
+    <div class="course-sidebar">
+      <h2>Available Courses</h2>
+      <a href="html_course.html" target="courseFrame">
+        <span class="course-icon">🌐</span> HTML Course
+      </a>
+      <a href="css_course.html" target="courseFrame">
+        <span class="course-icon">🎨</span> CSS Course
+      </a>
+      <a href="python_course.html" target="courseFrame">
+        <span class="course-icon">🐍</span> Python Course
+      </a>
+    </div>
+ 
+    <div class="course-content">
+      <iframe name="courseFrame" src="html_course.html"></iframe>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+ 
